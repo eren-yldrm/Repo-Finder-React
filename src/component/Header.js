@@ -7,7 +7,7 @@ import {
   InputBase,
   alpha,
   makeStyles,
-  Container
+  Container,
 } from "@material-ui/core/";
 import Body from "./Body";
 
@@ -66,12 +66,11 @@ const useStyles = makeStyles((theme) => ({
 export const searchContext = React.createContext();
 export const Header = () => {
   const classes = useStyles();
-  const [search,setSearch] = useState("eren-yldrm")
+  const [search, setSearch] = useState("eren-yldrm");
 
-  const handleSearch = (search)=>{
-    
-    setSearch(search)
-  }
+  const handleSearch = (search) => {
+    setSearch(search);
+  };
 
   return (
     <div className={classes.root}>
@@ -91,16 +90,15 @@ export const Header = () => {
                 input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
-              onChange={(e)=>handleSearch(e.target.value)}
+              onChange={(e) => handleSearch(e.target.value)}
             />
           </div>
         </Toolbar>
       </AppBar>
       <searchContext.Provider value={search}>
-      <Container style={{ display:'flex', justifyContent:'center' }}>
-         <Body />
-         </Container>
-        
+        <Container style={{ display: "flex", justifyContent: "center" }}>
+          <Body />
+        </Container>
       </searchContext.Provider>
     </div>
   );
