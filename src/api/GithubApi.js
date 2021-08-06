@@ -10,4 +10,8 @@ export const fetchRepos= async(username)=>{
     return data
 }
 
+export const fetchFollowers = async (username)=>{
+    const {data} = await axios.get(`https://api.github.com/users/${username}/followers`)
+    return data
+}
 

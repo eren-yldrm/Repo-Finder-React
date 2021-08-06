@@ -7,7 +7,7 @@ import {
   InputBase,
   alpha,
   makeStyles,
-  Container,
+  Grid,
 } from "@material-ui/core/";
 import Body from "./Body";
 
@@ -73,11 +73,18 @@ export const Header = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <div
+      className={classes.root}
+      style={{
+        backgroundImage: "url(/img/header.jpg)",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
       <AppBar position="static" color="primary">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            Github Arama
+            Github Finder
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -95,11 +102,20 @@ export const Header = () => {
           </div>
         </Toolbar>
       </AppBar>
-      <searchContext.Provider value={search}>
-        <Container style={{ display: "flex", justifyContent: "center" }}>
-          <Body />
-        </Container>
-      </searchContext.Provider>
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: "100vh" }}
+      >
+        <Grid item xs={12}>
+          <searchContext.Provider value={search}>
+            <Body />
+          </searchContext.Provider>
+        </Grid>
+      </Grid>
     </div>
   );
 };
